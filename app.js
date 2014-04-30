@@ -7,18 +7,22 @@ babyApp.controller("BabyCtrl", function($scope, $firebase){
 	$scope.username = "";
 
 	$scope.addMessage = function(){
-		// Add manually using standard JavaScript
-		if ($scope.username == ""){
-			$scope.username = "set yr username, dummy";
-			for (var i = 0; i<10; i++){
-				alert("Hey! Set your name!");
+		console.log(event);
+		// Check for click or enter press
+		if (event.type == 'click' || event.keyCode == 13 && !event.shiftKey){
+			// Add manually using standard JavaScript
+			if ($scope.username == ""){
+				$scope.username = "set yr username, dummy";
+				for (var i = 0; i<10; i++){
+					alert("Hey! Set your name!");
+				}
 			}
-		}
 
-		$scope.timestamp = Date.now();
-		babyRef.push( {timestamp:$scope.timestamp, message:$scope.message, username:$scope.username} );
-		// Clear text input after submission
-		$scope.timestamp = $scope.message = "";
+			$scope.timestamp = Date.now();
+			babyRef.push( {timestamp:$scope.timestamp, message:$scope.message, username:$scope.username} );
+			// Clear text input after submission
+			$scope.timestamp = $scope.message = "";
+		}
 	};
 
 	$scope.addUsername = function(){

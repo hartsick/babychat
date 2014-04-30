@@ -31,7 +31,7 @@
 
 		<div id="body-input">
 			<h3>Body:</h3>
-			<textarea x-ng-model="message" rows="7" columns="200"></textarea>
+			<textarea x-ng-model="message" rows="7" columns="200" x-ng-keypress="addMessage();"></textarea>
 			<input type="button" x-ng-click="addMessage();" value="Chat it up!" />
 		</div>
 

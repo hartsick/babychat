@@ -1,7 +1,7 @@
 var babyApp = angular.module('BabyApp', ["firebase"]);
 babyApp.controller("BabyCtrl", function($scope, $firebase){
 
-	var babyRef = new Firebase("https://babychat.firebaseio.com/chat");
+	var babyRef = new Firebase(database);
 
 	$scope.chat = $firebase(babyRef);
 	$scope.username = "";

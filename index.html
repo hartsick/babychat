@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html x-ng-app="BabyApp">
+	<head>
+		<title>Baby Chat!</title>
+		<!-- Angular -->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
+		<!-- Firebase -->
+		<script src="https://cdn.firebase.com/v0/firebase.js"></script>
+		<!-- Angular Fire -->
+  	<script src="https://cdn.firebase.com/libs/angularfire/0.6.0/angularfire.min.js"></script>
+  	<!-- My own janky code -->
+		<script src="app.js"></script>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+
+	<body x-ng-controller="BabyCtrl">
+		<h1>{{chatroomName}}</h1>
+
+		<div id="username-input">
+			<div x-ng-hide="nameIsSet">
+				<h3>Username:</h3>
+				<input type="text" x-ng-model="username" />
+				<input type="button" x-ng-click="addUsername();" value="Set username" />
+			</div>
+			<input type="button" x-ng-click="resetName();" value="Reset Name" x-ng-show="nameIsSet"/>
+		</div>
+
+		<div id="reset">
+			<input type="button" x-ng-click="chatReset();" value="Reset chatroom foreverrrr" />
+		</div>
+
+		<div id="body-input">
+			<h3>Body:</h3>
+			<textarea x-ng-model="message" rows="7" columns="200"></textarea>
+			<input type="button" x-ng-click="addMessage();" value="Chat it up!" />
+		</div>
+
+		<div id="chat-view">
+			<ul>
+				<li x-ng-repeat="c in chat">
+					<span class="timestamp">({{c.timestamp | date:'h:mma'}})</span> 
+					<span class="username">{{c.username}}:</span> 
+					<span class="message">{{c.message}}</span>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>

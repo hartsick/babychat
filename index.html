@@ -20,7 +20,7 @@
 				<div id="username-input">
 					<div x-ng-hide="nameIsSet">
 						<h3>Username:</h3>
-						<input type="text" x-ng-model="username" />
+						<input type="text" x-ng-model="username" /><br />
 						<input type="button" x-ng-click="addUsername();" value="Set username" />
 					</div>
 					<input type="button" x-ng-click="resetName();" value="Reset Name" x-ng-show="nameIsSet"/>
@@ -36,7 +36,7 @@
 				<input type="button" x-ng-click="addMessage();" value="Chat it up!" />
 			</div>
 		</header>
-		
+
 		<div id="chat-view">
 			<ul>
 				<li x-ng-repeat="c in chat">

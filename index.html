@@ -14,27 +14,29 @@
 	</head>
 
 	<body x-ng-controller="BabyCtrl">
-		<h1>{{chatroomName}}</h1>
-
-		<div id="username-input">
-			<div x-ng-hide="nameIsSet">
-				<h3>Username:</h3>
-				<input type="text" x-ng-model="username" />
-				<input type="button" x-ng-click="addUsername();" value="Set username" />
+		<header>
+			<h1>{{chatroomName}}</h1>
+			<div>
+				<div id="username-input">
+					<div x-ng-hide="nameIsSet">
+						<h3>Username:</h3>
+						<input type="text" x-ng-model="username" />
+						<input type="button" x-ng-click="addUsername();" value="Set username" />
+					</div>
+					<input type="button" x-ng-click="resetName();" value="Reset Name" x-ng-show="nameIsSet"/>
+				</div>
+				<div id="reset">
+					<input type="button" x-ng-click="chatReset();" value="Reset chatroom foreverrrr" />
+				</div>
 			</div>
-			<input type="button" x-ng-click="resetName();" value="Reset Name" x-ng-show="nameIsSet"/>
-		</div>
-
-		<div id="reset">
-			<input type="button" x-ng-click="chatReset();" value="Reset chatroom foreverrrr" />
-		</div>
-
-		<div id="body-input">
-			<h3>Body:</h3>
-			<textarea x-ng-model="message" rows="7" columns="200" x-ng-keypress="addMessage();"></textarea>
-			<input type="button" x-ng-click="addMessage();" value="Chat it up!" />
-		</div>
-
+			
+			<div id="body-input">
+				<h3>Body:</h3>
+				<textarea x-ng-model="message" rows="7" columns="200" x-ng-keypress="addMessage();"></textarea>
+				<input type="button" x-ng-click="addMessage();" value="Chat it up!" />
+			</div>
+		</header>
+		
 		<div id="chat-view">
 			<ul>
 				<li x-ng-repeat="c in chat">

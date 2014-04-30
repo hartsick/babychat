@@ -1,0 +1,84 @@
+.username{
+	color: red;
+	font-size: 18px;
+	font-family: 'Dosis', sans-serif;
+
+}
+
+.timestamp{
+	font-family: 'Dosis', sans-serif;
+	font-size: 8px;
+	
+}
+.message{
+	font-family: 'Dosis', sans-serif;
+		
+}
+
+.inputs {
+	float: left;
+}
+
+header div {
+	float: left;
+	
+}
+
+#chat-view{
+	margin-top: 300px;
+	background: rgba(255,255,255, .55);
+	max-width: 50%;
+}
+
+li {
+	list-style-type: none;
+}
+header{ 
+	background-color: white; 
+	position: fixed; 
+	top: 0;
+	left: 0;
+	width: 100%;
+	font-family: 'Dosis', sans-serif;
+	padding: 0 0 0 40px;
+	height: 250px;
+	
+}
+
+#reset {
+  padding: 5px 5px 5px 25px;
+  border: 1px solid #666;
+  background: red;
+  text-decoration:none;
+  position: relative;
+  top: 10px;
+  left: 580px;
+}
+
+#body-input{
+	position: relative;
+	top: 40px;
+	left: -410px;
+	
+}
+
+body{ 
+	background-image: url("../img/baby.gif");
+	background-size: 100%;
+}
+
+#username-input{
+	position: relative;
+	top: -30px;
+	padding: 0 0 0 40px;
+	
+}
+
+#textarea {
+	width: 800px;
+	height: 20px;
+}
+
+title {
+	padding: 20px;
+}

@@ -41,7 +41,7 @@
 		
 		<div id="chat-view">
 			<ul>
-				<li x-ng-repeat="c in chat">
+				<li x-ng-repeat="c in chat | orderObjectBy : '-$index'">
 					<span class="timestamp">({{c.timestamp | date:'h:mma'}})</span> 
 					<span class="username">{{c.username}}:</span> 
 					<span class="message">{{c.message}}</span>

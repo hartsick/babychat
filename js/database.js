@@ -1,1 +1,0 @@
-var database = "https://babychat.firebaseio.com/chat";

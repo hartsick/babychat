@@ -63,8 +63,8 @@ header{
 }
 
 body{ 
-	background-image: url("../img/baby.gif");
-	background-size: 100%;
+	background-image: url("../img/cooper.gif");
+/*	background-size: 100%;*/
 }
 
 #username-input{

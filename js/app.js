@@ -1,4 +1,25 @@
 var babyApp = angular.module('BabyApp', ["firebase"]);
+
+babyApp.filter('orderObjectBy', function(){
+ return function(input, attribute) {
+    if (!angular.isObject(input)){
+     return input;
+   	}
+
+    var array = [];
+    for(var objectKey in input) {
+        array.push(input[objectKey]);
+    }
+
+    array.sort(function(a, b){
+        a = parseInt(a[attribute]);
+        b = parseInt(b[attribute]);
+        return a - b;
+    });
+    return array;
+ }
+});
+
 babyApp.controller("BabyCtrl", function($scope, $firebase){
 
 	var babyRef = new Firebase(database);
@@ -43,3 +64,4 @@ babyApp.controller("BabyCtrl", function($scope, $firebase){
 	$scope.chatroomName = "Baby Chat";
 
 });
+

@@ -65,8 +65,24 @@ babyApp.controller("BabyCtrl", function($scope, $firebase){
 	};
 
 	$scope.chatReset = function(){
-		// Clear database
+		// Take down the perp's name
+		$scope.thePerp = $scope.username;
+
+		// Awaken the baby
+		$scope.username = "THE OMNISCIENT BABY EYE";
+
+		// Tell all the world what they've done
+		$scope.message = $scope.thePerp + " reset the chatroom!!!!!";
+		$scope.message = $scope.message.toUpperCase();
+
+		// Clear the database
 		babyRef.remove();
+
+		// Add the baby's message to database
+		$scope.addMessage();
+
+		// Reset username
+		$scope.username = "";
 	}
 
 	$scope.resetName = function(){

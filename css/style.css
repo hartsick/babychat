@@ -41,7 +41,12 @@ header div {
 	min-width: 400px;
 }
 
-#chat-view ul li {
+#chat-view ul {
+	width: 100%;
+}
+
+.message {
+	width: 80%;
 	max-width: 700px;
 }
 
@@ -83,7 +88,9 @@ line-height: 5px;
 	width: 200px;
 }
 
-@media only screen (max-width: 600px) {
+@media only screen 
+and (max-device-width: 600px)
+ {
 	#chat-view {
 		margin-top: 280px;
 		width: 100%;

@@ -1,3 +1,12 @@
+body{ 
+	background-image: url("../img/phoebe_winnie.jpeg");
+	background-size: 300px;
+	background-attachment: fixed;
+	background-position: 0 150px;
+/*	background-size: 100%;*/
+}
+
+
 .username{
 	color: red;
 	font-size: 18px;
@@ -15,8 +24,9 @@
 		
 }
 
-.inputs {
+#inputs {
 	float: left;
+	width: 400px;
 }
 
 header div {
@@ -25,9 +35,14 @@ header div {
 }
 
 #chat-view{
-	margin-top: 300px;
-	background: rgba(255,255,255, .55);
-	width: 900px;
+	margin-top: 180px;
+	background: rgba(255,255,255, .8);
+	width: 75%;
+	min-width: 400px;
+}
+
+#chat-view ul li {
+	max-width: 700px;
 }
 
 li {
@@ -40,48 +55,41 @@ header{
 	left: 0;
 	width: 100%;
 	font-family: 'Dosis', sans-serif;
-	padding: 0 0 0 40px;
-	height: 250px;
-	
+	padding: 0 0 5px 40px;
 }
 
-#reset {
-  padding: 5px 5px 5px 25px;
-  border: 1px solid #666;
-  background: red;
-  text-decoration:none;
-  position: relative;
-  top: 10px;
-  left: 580px;
+header h1 {
+	line-height: 10px;
+	margin-top: 30px;
 }
 
-#body-input{
-	position: relative;
-	top: 40px;
-	left: -410px;
-	
+
+#username-input h3, #body-input h3{
+line-height: 5px;
 }
 
-body{ 
-	background-image: url("../img/phoebe_winnie.jpeg");
-	background-size: 300px;
-	background-attachment: fixed;
-	background-position: 0 250px;
-/*	background-size: 100%;*/
-}
 
-#username-input{
-	position: relative;
-	top: -30px;
-	padding: 0 0 0 40px;
-	
-}
 
 #textarea {
 	width: 800px;
 	height: 20px;
 }
 
-title {
-	padding: 20px;
+#reset {
+	float: left;
+}
+
+#topstuff {
+	width: 200px;
+}
+
+@media only screen (max-width: 600px) {
+	#chat-view {
+		margin-top: 280px;
+		width: 100%;
+	}
+	#chat-view ul li {
+		max-width: 90%;
+	}
+
 }

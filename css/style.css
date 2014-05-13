@@ -27,11 +27,11 @@ header div {
 #chat-view{
 	margin-top: 300px;
 	background: rgba(255,255,255, .55);
-	max-width: 50%;
+	width: 900px;
 }
 
 li {
-	list-style-type: none;
+	list-style-type: none;         
 }
 header{ 
 	background-color: white; 
@@ -63,7 +63,10 @@ header{
 }
 
 body{ 
-	background-image: url("../img/cooper.gif");
+	background-image: url("../img/phoebe_winnie.jpeg");
+	background-size: 300px;
+	background-attachment: fixed;
+	background-position: 0 250px;
 /*	background-size: 100%;*/
 }
 

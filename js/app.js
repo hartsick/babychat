@@ -27,8 +27,14 @@ babyApp.controller("BabyCtrl", function($scope, $firebase){
 	$scope.chat = $firebase(babyRef);
 	$scope.username = "";
 
+	// Scroll window to most recent message
+	// window.onload = {
+ //    $('body').animate({
+	// 	    scrollBottom: $('.last')
+	// 	}, 2000);
+	// }
+
 	$scope.addMessage = function(){
-		console.log(event);
 		// Check for click or enter press
 		if (event.type == 'click' || event.keyCode == 13 && !event.shiftKey){
 			// Add manually using standard JavaScript
@@ -60,6 +66,15 @@ babyApp.controller("BabyCtrl", function($scope, $firebase){
 	$scope.resetName = function(){
 		$scope.nameIsSet = false;
 	}
+
+	// STILL NEEDS WORK
+	// $scope.scrollTo = function($last){
+	// 	// Scroll window to new message
+	// 	console.log($last);
+ //    $('body').animate({
+ //        scrollTop: $($last).offset().top
+ //    }, 2000);
+	// }
 
 	$scope.chatroomName = "Baby Chat";
 

@@ -30,7 +30,7 @@
 					<div x-ng-hide="nameIsSet">
 						<h3>Username:</h3>
 						<input type="text" x-ng-model="username" />
-						<input type="button" x-ng-click="addUsername();" value="Set username" />
+						<input type="button" x-ng-click="setUsername();" value="Set username" />
 					</div>
 <!-- 					<input id="reset-button" type="button" x-ng-click="resetName();" value="Reset Name" x-ng-show="nameIsSet"/> -->
 				</div>
@@ -43,14 +43,16 @@
 		</header>
 		
 		<div id="buffer" x-ng-class="{ 'set-name' : nameIsSet }"></div>
-		<div id="chat-view" >
+		<div id="chat-view">
 			<ul>
-				<li x-ng-repeat="c in chat" >
+				<li class="chat-entry" x-ng-repeat="c in chat" >
 					<span class="timestamp">({{c.timestamp | date:'h:mma'}})</span> 
 					<span class="username">{{c.username}}:</span> 
 					<span class="message">{{c.message}}</span>
 				</li>
 			</ul>
 		</div>
+		<footer>
+		</footer>
 	</body>
 </html>

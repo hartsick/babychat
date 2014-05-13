@@ -24,20 +24,20 @@ babyApp.controller("BabyCtrl", function($scope, $firebase){
 
 	var babyRef = new Firebase(database);
 
+	// Load messages from Firebase
 	$scope.chat = $firebase(babyRef);
 	$scope.username = "";
 
-	// Scroll window to most recent message
-	// window.onload = {
- //    $('body').animate({
-	// 	    scrollBottom: $('.last')
-	// 	}, 2000);
-	// }
+	// Set chatroom name
+	$scope.chatroomName = "Baby Chat";
 
+	// Add new chat message
 	$scope.addMessage = function(){
-		// Check for click or enter press
+
+		// Check for click or press enter in message box
 		if (event.type == 'click' || event.keyCode == 13 && !event.shiftKey){
-			// Add manually using standard JavaScript
+
+			// If no username set, tell 'em
 			if ($scope.username == ""){
 				$scope.username = "set yr username, dummy";
 				for (var i = 0; i<10; i++){
@@ -45,15 +45,21 @@ babyApp.controller("BabyCtrl", function($scope, $firebase){
 				}
 			}
 
+			// Assign message timestamp
 			$scope.timestamp = Date.now();
+
+			// Send info to Firebase
 			babyRef.push( {timestamp:$scope.timestamp, message:$scope.message, username:$scope.username} );
+
 			// Clear text input after submission
 			$scope.timestamp = $scope.message = "";
+
+			// Scroll to bottom on new message
+			$scope.scrollToBottom();
 		}
 	};
 
-	$scope.addUsername = function(){
-		// Add manually using standard JavaScript
+	$scope.setUsername = function(){
 		babyRef.username = $scope.username;
 		$scope.nameIsSet = true;
 	};
@@ -67,16 +73,11 @@ babyApp.controller("BabyCtrl", function($scope, $firebase){
 		$scope.nameIsSet = false;
 	}
 
-	// STILL NEEDS WORK
-	// $scope.scrollTo = function($last){
-	// 	// Scroll window to new message
-	// 	console.log($last);
- //    $('body').animate({
- //        scrollTop: $($last).offset().top
- //    }, 2000);
-	// }
-
-	$scope.chatroomName = "Baby Chat";
+	$scope.scrollToBottom = function() {
+		$('html, body').animate({
+		   scrollTop: $('footer').offset().top
+		}, 'slow');
+	};
 
 });
 

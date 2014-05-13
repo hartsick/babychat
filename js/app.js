@@ -1,32 +1,13 @@
 var babyApp = angular.module('BabyApp', ["firebase", "ngSanitize"]);
-
-babyApp.filter('orderObjectBy', function(){
- return function(input, attribute) {
-    if (!angular.isObject(input)){
-     return input;
-   	}
-
-    var array = [];
-    for(var objectKey in input) {
-        array.push(input[objectKey]);
-    }
-
-    array.sort(function(a, b){
-        a = parseInt(a[attribute]);
-        b = parseInt(b[attribute]);
-        return a - b;
-    });
-    return array;
- }
-});
-
 babyApp.controller("BabyCtrl", function($scope, $firebase){
 
+	// Store Firebase information (from database.js)
 	var babyRef = new Firebase(database);
 
 	// Load messages from Firebase
 	$scope.chat = $firebase(babyRef);
-	$scope.username = "";
+	$scope.username = null;
+	$scope.message = null;
 
 	// Set chatroom name
 	$scope.chatroomName = "Baby Chat";
@@ -38,26 +19,40 @@ babyApp.controller("BabyCtrl", function($scope, $firebase){
 		if (event.type == 'click' || event.keyCode == 13 && !event.shiftKey){
 
 			// If no username set, tell 'em
-			if ($scope.username == ""){
+			if ($scope.username == null ){
 				$scope.username = "set yr username, dummy";
 				for (var i = 0; i<10; i++){
 					alert("Hey! Set your name!");
 				}
 			}
 
-			// Assign message timestamp
-			$scope.timestamp = Date.now();
+			if ($scope.message.length > 0) {
 
-			// Send info to Firebase
-			babyRef.push( {timestamp:$scope.timestamp, message:$scope.message, username:$scope.username} );
+				// Assign message timestamp
+				$scope.timestamp = Date.now();
 
-			// Clear text input after submission
-			$scope.timestamp = $scope.message = "";
+				// Send info to Firebase
+				babyRef.push( {timestamp:$scope.timestamp, message:$scope.message, username:$scope.username} );
 
-			// Scroll to bottom on new message
-			$scope.scrollToBottom();
+				console.log($scope.babyForm.babyBody);
+
+				// Clear text input after submission
+				$scope.timestamp = $scope.message = null;
+				$scope.babyForm.$setPristine();
+				$scope.babyForm.babyBody = null;
+
+			} 
+			// else {
+			// 	console.log('needs a body');
+			// 	console.log($scope.babyForm.babyBody);
+			// }
+			// console.log($scope.message);
 		}
 	};
+
+	// $scope.message.$on('change', function(){
+	// 	console.log('change!')
+	// });
 
 	$scope.setUsername = function(){
 		babyRef.username = $scope.username;
@@ -67,6 +62,9 @@ babyApp.controller("BabyCtrl", function($scope, $firebase){
 	$scope.chatReset = function(){
 		// Take down the perp's name
 		$scope.thePerp = $scope.username;
+		if ($scope.thePerp == ""){
+			$scope.thePerp = "Someone sneaky";
+		}
 
 		// Awaken the baby
 		$scope.username = "THE OMNISCIENT BABY EYE";
@@ -82,18 +80,26 @@ babyApp.controller("BabyCtrl", function($scope, $firebase){
 		$scope.addMessage();
 
 		// Reset username
-		$scope.username = "";
+		$scope.username = $scope.thePerp;
 	}
 
 	$scope.resetName = function(){
 		$scope.nameIsSet = false;
 	}
 
-	$scope.scrollToBottom = function() {
-		$('html, body').animate({
-		   scrollTop: $('footer').offset().top
-		}, 'slow');
-	};
+	// Scroll to bottom of #chat-view on new message
+	$scope.$watch(
+    function () {
+      return $('#chat-view').height();
+    },
+    function (newValue, oldValue) {
+      if (newValue != oldValue) {
+				$('html, body').animate({
+				   scrollTop: $('footer').offset().top
+				}, 20);
+      }
+    }
+	);
 
 });
 

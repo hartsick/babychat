@@ -5,7 +5,7 @@
 		<link href='https://fonts.googleapis.com/css?family=Dosis' rel='stylesheet' type='text/css' />
 		<title>Baby Chat!</title>
 		<!-- Angular -->
-		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script src="https://code.jquery.com/jquery-latest.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
   	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-sanitize.js"></script>
 		<!-- Firebase -->
@@ -26,25 +26,26 @@
 					<input type="button" x-ng-click="chatReset();" value="Reset chatroom foreverrrr" />
 				</div>
 			</div>
-			<div id = "inputs">
-				<div id="username-input">
-					<div x-ng-hide="nameIsSet">
-						<h3>Username:</h3>
-						<input type="text" x-ng-model="username" />
-						<input type="button" x-ng-click="setUsername();" value="Set username" />
+			<form name="babyForm" ng-submit="submit()">
+				<div id = "inputs">
+					<div id="username-input">
+						<div x-ng-hide="nameIsSet">
+							<h3>Username:</h3>
+							<input type="text" x-ng-model="username" />
+							<input type="button" x-ng-click="setUsername();" value="Set username" />
+						</div>
 					</div>
-<!-- 					<input id="reset-button" type="button" x-ng-click="resetName();" value="Reset Name" x-ng-show="nameIsSet"/> -->
+					<div id="body-input">
+						<h3>Body:</h3>
+						<textarea name="babyBody" rows="2" cols="40" x-ng-model="message" x-ng-minlength="0" x-ng-keypress="addMessage()"></textarea>
+						<input id="message-submit" type="submit" value="Chat it up!" x-ng-click="addMessage()" />
+					</div>
 				</div>
-				<div id="body-input">
-					<h3>Body:</h3>
-					<textarea rows="4" cols="45" x-ng-model="message" x-ng-keypress="addMessage();"></textarea>
-					<input type="button" x-ng-click="addMessage();" value="Chat it up!" />
-				</div>
-			</div>
+			</form>
 		</header>
 		
 		<div id="buffer" x-ng-class="{ 'set-name' : nameIsSet }"></div>
-		<div id="chat-view">
+		<div id="chat-view" >
 			<ul>
 				<li class="chat-entry" x-ng-repeat="c in chat">
 					<span class="timestamp">({{c.timestamp | date:'h:mma'}})</span> 

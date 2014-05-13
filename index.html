@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html x-ng-app="BabyApp">
 	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 		<link href='https://fonts.googleapis.com/css?family=Dosis' rel='stylesheet' type='text/css' />
 		<title>Baby Chat!</title>
 		<!-- Angular -->
@@ -31,19 +32,17 @@
 						<input type="text" x-ng-model="username" />
 						<input type="button" x-ng-click="addUsername();" value="Set username" />
 					</div>
-					<input type="button" x-ng-click="resetName();" value="Reset Name" x-ng-show="nameIsSet"/>
+<!-- 					<input id="reset-button" type="button" x-ng-click="resetName();" value="Reset Name" x-ng-show="nameIsSet"/> -->
 				</div>
 				<div id="body-input">
 					<h3>Body:</h3>
-					<textarea rows="2" cols="75" x-ng-model="message" x-ng-keypress="addMessage();"></textarea>
+					<textarea rows="4" cols="45" x-ng-model="message" x-ng-keypress="addMessage();"></textarea>
 					<input type="button" x-ng-click="addMessage();" value="Chat it up!" />
 				</div>
-			
 			</div>
-			
-			
 		</header>
 		
+		<div id="buffer" x-ng-class="{ 'set-name' : nameIsSet }"></div>
 		<div id="chat-view" >
 			<ul>
 				<li x-ng-repeat="c in chat" >

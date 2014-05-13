@@ -9,19 +9,18 @@ body{
 
 .username{
 	color: red;
-	font-size: 18px;
+	font-size: 1.2em;
 	font-family: 'Dosis', sans-serif;
 
 }
 
 .timestamp{
 	font-family: 'Dosis', sans-serif;
-	font-size: 8px;
+	font-size: .8em;
 	
 }
 .message{
 	font-family: 'Dosis', sans-serif;
-		
 }
 
 #inputs {
@@ -31,11 +30,9 @@ body{
 
 header div {
 	float: left;
-	
 }
 
 #chat-view{
-	margin-top: 180px;
 	background: rgba(255,255,255, .8);
 	width: 75%;
 	min-width: 400px;
@@ -45,13 +42,17 @@ header div {
 	width: 100%;
 }
 
+#chat-view ul li {
+	max-width: 700px; 
+	width: 95% 
+}
+
 .message {
-	width: 80%;
-	max-width: 700px;
+	width: 70%;
 }
 
 li {
-	list-style-type: none;         
+	list-style-type: none;       
 }
 header{ 
 	background-color: white; 
@@ -60,20 +61,26 @@ header{
 	left: 0;
 	width: 100%;
 	font-family: 'Dosis', sans-serif;
-	padding: 0 0 5px 40px;
+	padding: 0 0 5px 20px;
 }
 
 header h1 {
-	line-height: 10px;
+	line-height: .2em;
 	margin-top: 30px;
 }
+/*
+#username-input {
+	height: 4em;
+}
 
+#reset-button{
+	position: relative;
+	top: 3.5em;
+}*/
 
 #username-input h3, #body-input h3{
 line-height: 5px;
 }
-
-
 
 #textarea {
 	width: 800px;
@@ -88,15 +95,41 @@ line-height: 5px;
 	width: 200px;
 }
 
-@media only screen 
-and (max-device-width: 600px)
- {
+#buffer {
+	width: 100%;
+	height: 190px;
+}
+
+#buffer.set-name {
+	height: 120px;
+}
+
+@media screen and (max-width : 600px) {
+	#buffer {
+		height: 250px;
+	}
+	#buffer.set-name {
+		height: 195px;
+	}
+	#username-input h3, #body-input h3{
+		font-size: 1em;
+		line-height: 0;
+	}
+
 	#chat-view {
-		margin-top: 280px;
 		width: 100%;
+		min-width: 0;
+		overflow-x: hidden;
+	}
+	#chat-view ul {
+		margin: 0;
+		padding: 0 10px;
 	}
 	#chat-view ul li {
 		max-width: 90%;
 	}
 
+	#body-input textarea, #body-input input, #reset-button {
+		display: block;
+	}
 }

@@ -7,6 +7,7 @@
 		<!-- Angular -->
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
+  	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-sanitize.js"></script>
 		<!-- Firebase -->
 		<script src="https://cdn.firebase.com/v0/firebase.js"></script>
 		<!-- Angular Fire -->
@@ -45,10 +46,10 @@
 		<div id="buffer" x-ng-class="{ 'set-name' : nameIsSet }"></div>
 		<div id="chat-view">
 			<ul>
-				<li class="chat-entry" x-ng-repeat="c in chat" >
+				<li class="chat-entry" x-ng-repeat="c in chat">
 					<span class="timestamp">({{c.timestamp | date:'h:mma'}})</span> 
 					<span class="username">{{c.username}}:</span> 
-					<span class="message">{{c.message}}</span>
+					<span class="message" x-ng-bind-html="c.message | linky:'_blank'">{{c.message}}</span>
 				</li>
 			</ul>
 		</div>

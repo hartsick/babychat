@@ -1,4 +1,4 @@
-var babyApp = angular.module('BabyApp', ["firebase"]);
+var babyApp = angular.module('BabyApp', ["firebase", "ngSanitize"]);
 
 babyApp.filter('orderObjectBy', function(){
  return function(input, attribute) {

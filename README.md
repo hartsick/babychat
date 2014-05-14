@@ -1,4 +1,5 @@
 ***PRESENTING... BABYCHAT!***
+
 BabyChat is the one and only chat geared specifically for babies young! and! old! It hooks up to Firebase for easy deployment, and allows for people to create their own small group chatrooms (since Hipchat doesn't!).
 
 There's currently no user signup or authentication, so anyone who has the link can see content. Also, the database is cleared when the "reset chatroom" button is hit, so data doesn't persist. 

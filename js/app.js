@@ -62,7 +62,7 @@ babyApp.controller("BabyCtrl", function($scope, $firebase){
 	$scope.chatReset = function(){
 		// Take down the perp's name
 		$scope.thePerp = $scope.username;
-		if ($scope.thePerp == ""){
+		if ($scope.thePerp == null){
 			$scope.thePerp = "Someone sneaky";
 		}
 

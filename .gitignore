@@ -6,3 +6,4 @@
 
 # Ignore database config
 js/database.js
+firebase.json
